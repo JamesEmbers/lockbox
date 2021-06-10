@@ -1,0 +1,50 @@
+{
+    "name": "emberfuse/lockbox",
+    "description": "A simple PHP environment variables repository.",
+    "type": "library",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Thavarshan Thayananthajothy",
+            "email": "tjthavarshan@gmail.com"
+        }
+    ],
+    "support": {
+        "issues": "https://github.com/emberfuse/lockbox/issues",
+        "source": "https://github.com/emberfuse/lockbox"
+    },
+    "require": {
+        "php": "^7.4|^8.0",
+        "ext-json": "*",
+        "ext-mbstring": "*",
+        "phpoption/phpoption": "^1.7",
+        "vlucas/phpdotenv": "^5.3"
+    },
+    "require-dev": {
+        "mockery/mockery": "^1.4",
+        "phpunit/phpunit": "^9.5"
+    },
+    "autoload": {
+        "psr-4": {
+            "Emberfuse\\Lockbox\\": "src/"
+        },
+        "files": [
+            "src/helpers.php"
+        ]
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Emberfuse\\Tests\\": "tests/"
+        }
+    },
+    "extra": {
+        "branch-alias": {
+            "dev-main": "1.x-dev"
+        }
+    },
+    "config": {
+        "sort-packages": true
+    },
+    "minimum-stability": "dev",
+    "prefer-stable": true
+}
