@@ -3,6 +3,7 @@
 namespace Emberfuse\Lockbox\Tests;
 
 use Mockery as m;
+use Emberfuse\Lockbox\Env;
 use PHPUnit\Framework\TestCase;
 use Emberfuse\Lockbox\Repository;
 use Dotenv\Repository\RepositoryInterface;
@@ -24,5 +25,39 @@ class RepositoryTest extends TestCase
         );
 
         $this->assertInstanceOf(RepositoryInterface::class, $respository);
+    }
+
+    public function testCreateRepository()
+    {
+        $this->assertInstanceOf(RepositoryInterface::class, Env::createRepository());
+    }
+
+    public function testRetrieveValue()
+    {
+        $repository = Env::createRepository();
+        $repository->set('FOO', 'BAR');
+
+        $this->assertEquals('BAR', $repository->get('FOO'));
+    }
+
+    public function testDetermineExistanceOfValue()
+    {
+        $repository = Env::createRepository();
+        $repository->set('FOO', 'BAR');
+
+        $this->assertTrue($repository->has('FOO'));
+        $this->assertFalse($repository->has('FUR'));
+    }
+
+    public function testRemoveValue()
+    {
+        $repository = Env::createRepository();
+        $repository->set('FOO', 'BAR');
+
+        $this->assertTrue($repository->has('FOO'));
+
+        $repository->clear('FOO');
+
+        $this->assertFalse($repository->has('FOO'));
     }
 }

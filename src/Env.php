@@ -34,7 +34,7 @@ class Env
      *
      * @return \Dotenv\Repository\RepositoryInterface
      */
-    protected static function createRepository(): RepositoryInterface
+    public static function createRepository(): RepositoryInterface
     {
         if (static::$repository === null) {
             $adapters = \iterator_to_array(self::defaultAdapters());
