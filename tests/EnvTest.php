@@ -6,8 +6,12 @@ use PHPUnit\Framework\TestCase;
 
 class EnvTest extends TestCase
 {
-    public function testFunction()
+    public function testGetFalseValue()
     {
-        $this->assertTrue(true);
+        $repository = Env::createRepository();
+        $repository->set('FOO', '(false)');
+
+        $this->assertEquals(false, Env::get('FOO'));
+        $this->assertNotEquals(false, $repository->get('FOO'));
     }
 }
